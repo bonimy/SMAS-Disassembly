@@ -5981,7 +5981,7 @@ CODE_2AB331:    REP #$30                ; $2A:B331: C2 30       ;
 
                 db $1D,$23,$23,$21                              ;
 
-CODE_2AB34D:      REP #$10                ; $2A:B34D: C2 10       ;
+CODE_2AB34D:    REP #$10                ; $2A:B34D: C2 10       ;
                 LDX $00                 ; $2A:B34F: A6 00       ;
                 LDA #$1A                ; $2A:B351: A9 1A       ;
                 JSR CODE_2A8CD9         ; $2A:B353: 20 D9 8C    ;
