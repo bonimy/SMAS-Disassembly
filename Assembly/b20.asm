@@ -3997,7 +3997,7 @@ CODE_20A38C:    JSR CODE_20801F         ; $20:A38C: 20 1F 80    ; \ * wait for v
                 LDA $0014               ; $20:A397: AD 14 00    ; | * and keep running it until results should appear
                 BEQ CODE_20A38C         ; $20:A39A: F0 F0       ; / *
                 LDA $078C               ; $20:A39C: AD 8C 07    ; \ X = player who won the game
-                DEC A                   ; $20:A39F: 3A          ; | 0 = mario, 1 = luigi
+                DEC A                   ; $20:A39F: 3A          ; | 0 = Mario, 1 = luigi
                 EOR #$01                ; $20:A3A0: 49 01       ; |
                 TAX                     ; $20:A3A2: AA          ; /
                 LDA #$01                ; $20:A3A3: A9 01       ; \ coin sound effect

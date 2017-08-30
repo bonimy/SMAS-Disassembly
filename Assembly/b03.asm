@@ -162,6 +162,7 @@ CODE_038015:    NOP                     ; $03:8015: EA          ;\Waste time for
                 STA $09                 ; $03:81A3: 85 09       ;
                 STA $4200               ; $03:81A5: 8D 00 42    ;
                 CLI                     ; $03:81A8: 58          ;
+
 CODE_0381A9:    LDA $0154               ; $03:81A9: AD 54 01    ;
                 BEQ CODE_0381A9         ; $03:81AC: F0 FB       ;
                 JSL CODE_05C800         ; $03:81AE: 22 00 C8 05 ;
@@ -198,7 +199,6 @@ CODE_0381F3:    LDA $0FFA,x             ; $03:81F3: BD FA 0F    ;
                 AND #$01                ; $03:81FE: 29 01       ;
                 BEQ CODE_038205         ; $03:8200: F0 03       ;
                 JMP CODE_0382D4         ; $03:8202: 4C D4 82    ;
-
 CODE_038205:    JSL CODE_05E634         ; $03:8205: 22 34 E6 05 ;
                 JSR CODE_038555         ; $03:8209: 20 55 85    ;
                 JSL CODE_05EE3A         ; $03:820C: 22 3A EE 05 ;
@@ -219,7 +219,6 @@ CODE_038218:    LDA $0ED6               ; $03:8218: AD D6 0E    ;
 CODE_038233:    STZ $07B0               ; $03:8233: 9C B0 07    ;
                 STZ $0ED6               ; $03:8236: 9C D6 0E    ;
                 BRA CODE_03825F         ; $03:8239: 80 24       ;
-
 CODE_03823B:    LDA $0FFA               ; $03:823B: AD FA 0F    ;
                 ORA $0FF6               ; $03:823E: 0D F6 0F    ;
                 AND #$40                ; $03:8241: 29 40       ;
@@ -323,7 +322,7 @@ CODE_038323:    INC $0154               ; $03:8323: EE 54 01    ;
                 LDA DATA_0382DE,x       ; $03:8329: BD DE 82    ; |
                 STA $00                 ; $03:832C: 85 00       ; |
                 LDA DATA_0382F1,x       ; $03:832E: BD F1 82    ; |
-                STA $01                 ; $03:8331: 85 01       ; | 
+                STA $01                 ; $03:8331: 85 01       ; |
                 LDA #$03                ; $03:8333: A9 03       ; |
                 STA $02                 ; $03:8335: 85 02       ; |
                 JSR CODE_039BBC         ; $03:8337: 20 BC 9B    ;/ Stripe image uploader
@@ -371,7 +370,6 @@ CODE_03837A:    STA $2116               ; $03:837A: 8D 16 21    ;/Set VRAM addre
                 BPL CODE_03837A         ; $03:8396: 10 E2       ;
                 SEP #$20                ; $03:8398: E2 20       ;
                 STZ $0EF9               ; $03:839A: 9C F9 0E    ;
-
 CODE_03839D:    LDA $0ED4               ; $03:839D: AD D4 0E    ;What is this address?
                 BEQ CODE_0383D6         ; $03:83A0: F0 34       ;
                 LDA #$7F                ; $03:83A2: A9 7F       ;\
@@ -397,7 +395,6 @@ CODE_0383B2:    STA $2116               ; $03:83B2: 8D 16 21    ;/Set VRAM addre
                 STZ $2000               ; $03:83D0: 9C 00 20    ;
                 STZ $0ED4               ; $03:83D3: 9C D4 0E    ;
 CODE_0383D6:    SEP #$30                ; $03:83D6: E2 30       ;
-
                 LDA #$80                ; $03:83D8: A9 80       ;
                 STA $2115               ; $03:83DA: 8D 15 21    ;
                 JSR CODE_039B1D         ; $03:83DD: 20 1D 9B    ;
@@ -1023,7 +1020,7 @@ CODE_03892C:    STZ $0FF4               ; $03:892C: 9C F4 0F    ;\
                 STA $078F               ; $03:8946: 8D 8F 07    ;/End of level timer to score conversion speed
                 JSR CODE_03AD70         ; $03:8949: 20 70 AD    ;
                 LDA $0754               ; $03:894C: AD 54 07    ;\
-                BNE CODE_038954         ; $03:894F: D0 03       ;/Return if small mario
+                BNE CODE_038954         ; $03:894F: D0 03       ;/Return if small Mario
                 INC $0772               ; $03:8951: EE 72 07    ;
 CODE_038954:    RTS                     ; $03:8954: 60          ;
 
@@ -4184,7 +4181,7 @@ CODE_03AA02:    TYA                     ; $03:AA02: 98          ;
                 BEQ CODE_03AA39         ; $03:AA0F: F0 28       ;
                 JSR CODE_03AA6B         ; $03:AA11: 20 6B AA    ;\Get free sprite slot for the piranha plant
                 BCS CODE_03AA39         ; $03:AA14: B0 23       ;/If none, skip
-                JSR CODE_03ACE0         ; $03:AA16: 20 E0 AC    ;\Get Xpos of screen ((AND #$F0>>4)<<4)
+                JSR CODE_03ACE0         ; $03:AA16: 20 E0 AC    ;\Get X-pos of screen ((AND #$F0>>4)<<4)
                 CLC                     ; $03:AA19: 18          ; |
                 ADC #$08                ; $03:AA1A: 69 08       ; |Add 8 pixels to it
                 STA $021A,x             ; $03:AA1C: 9D 1A 02    ; |Store into Sprite X-Position
@@ -4195,7 +4192,7 @@ CODE_03AA02:    TYA                     ; $03:AA02: 98          ;
                 STA $BC,x               ; $03:AA28: 95 BC       ; |Sprite is onscreen in a normal way
                 STA $10,x               ; $03:AA2A: 95 10       ;/
                 JSR CODE_03ACE8         ; $03:AA2C: 20 E8 AC    ;\ (A << 4) + $20
-                STA $0238,x             ; $03:AA2F: 9D 38 02    ;/Store ypos
+                STA $0238,x             ; $03:AA2F: 9D 38 02    ;/Store y-pos
                 LDA #$0D                ; $03:AA32: A9 0D       ;\
                 STA $1C,x               ; $03:AA34: 95 1C       ;/Sprite to generate: Piranha plant
                 JSR CODE_03CB99         ; $03:AA36: 20 99 CB    ;Run piranha plant code?
@@ -5838,14 +5835,14 @@ CODE_03B6F7:    DEY                     ; $03:B6F7: 88          ;
 
 ;This piece of code only triggers... |
 ;...when Mario throws a fireball.    V
-                LDA $0219               ; $03:B6FA: AD 19 02    ;\Load Mario's Xpos (Xpos in single page)
+                LDA $0219               ; $03:B6FA: AD 19 02    ;\Load Mario's X-pos (X-pos in single page)
                 ADC #$04                ; $03:B6FD: 69 04       ; |Add $04/$05 to it (Depends on C flag)
-                STA $0224,x             ; $03:B6FF: 9D 24 02    ;/Store into Fireball creation Xpos
-                LDA $78                 ; $03:B702: A5 78       ;\Load Mario's Xpos (Page # player is in)
+                STA $0224,x             ; $03:B6FF: 9D 24 02    ;/Store into Fireball creation X-pos
+                LDA $78                 ; $03:B702: A5 78       ;\Load Mario's X-pos (Page # player is in)
                 ADC #$00                ; $03:B704: 69 00       ; |Add $00/$01 to it (Depends on C flag)
                 STA $83,x               ; $03:B706: 95 83       ;/Store into page of Fireball (not sure)
-                LDA $0237               ; $03:B708: AD 37 02    ;\Load Mario's Ypos
-                STA $0242,x             ; $03:B70B: 9D 42 02    ;/Store into Ypos of fireball
+                LDA $0237               ; $03:B708: AD 37 02    ;\Load Mario's Y-pos
+                STA $0242,x             ; $03:B70B: 9D 42 02    ;/Store into Y-pos of fireball
                 LDA #$01                ; $03:B70E: A9 01       ;\Set the "Mario threw a fireball" flag
                 STA $C6,x               ; $03:B710: 95 C6       ;/
                 LDY $0202               ; $03:B712: AC 02 02    ;\Mario's direction
@@ -7737,11 +7734,11 @@ PNTR_03C62F:    dw CODE_03C6D3                                  ; $00 - Green Ko
                 dw CODE_03CBD9                                  ; $18 - Disable Lakitu Generator
                 dw CODE_03C69D                                  ; $19 - Nothing
                 dw CODE_03C69D                                  ; $1A - Nothing
-                dw CODE_03C821                                  ; $1B - Firebar (Clockwise)
-                dw CODE_03C821                                  ; $1C - Fast Firebar (Clockwise)
-                dw CODE_03C821                                  ; $1D - Firebar (Counter-Clockwise)
-                dw CODE_03C821                                  ; $1E - Fast Firebar (Counter-Clockwise)
-                dw CODE_03C81E                                  ; $1F - Long Firebar (Clockwise)
+                dw CODE_03C821                                  ; $1B - Fire-bar (Clockwise)
+                dw CODE_03C821                                  ; $1C - Fast Fire-bar (Clockwise)
+                dw CODE_03C821                                  ; $1D - Fire-bar (Counter-Clockwise)
+                dw CODE_03C821                                  ; $1E - Fast Fire-bar (Counter-Clockwise)
+                dw CODE_03C81E                                  ; $1F - Long Fire-bar (Clockwise)
                 dw CODE_03C69D                                  ; $20 - Nothing? Related to the firebars above?
                 dw CODE_03C69D                                  ; $21 - Nothing? Related to the firebars above?
                 dw CODE_03C69D                                  ; $22 - Nothing? Related to the firebars above?
@@ -7772,7 +7769,7 @@ CODE_03C69E:    JSR CODE_03C6D3         ; $03:C69E: 20 D3 C6    ;
                 JMP CODE_03C707         ; $03:C6A1: 4C 07 C7    ;
 
 CODE_03C6A4:    LDA #$D0                ; $03:C6A4: A9 D0       ;\Podoboo init
-                STA $0238,x             ; $03:C6A6: 9D 38 02    ;/Set Ypos to bottom of the screen
+                STA $0238,x             ; $03:C6A6: 9D 38 02    ;/Set Y-pos to bottom of the screen
                 LDA #$01                ; $03:C6A9: A9 01       ;
                 STA $BC,x               ; $03:C6AB: 95 BC       ;
                 STA $07A2,x             ; $03:C6AD: 9D A2 07    ;
@@ -7785,12 +7782,12 @@ CODE_03C6A4:    LDA #$D0                ; $03:C6A4: A9 D0       ;\Podoboo init
 
 CODE_03C6C0:    LDA $075F               ; $03:C6C0: AD 5F 07    ;\INIT routine of Toad/Peach. Load current world
                 CMP #$07                ; $03:C6C3: C9 07       ; |If you are NOT in world 8
-                BNE CODE_03C6CD         ; $03:C6C5: D0 06       ; |Set Ypos of sprite to $B8 (floor)
-                LDA #$70                ; $03:C6C7: A9 70       ;\|Otherwise, set Ypos to $70 (inside cage)
+                BNE CODE_03C6CD         ; $03:C6C5: D0 06       ; |Set Y-pos of sprite to $B8 (floor)
+                LDA #$70                ; $03:C6C7: A9 70       ;\|Otherwise, set Y-pos to $70 (inside cage)
 CODE_03C6C9:    STA $0238,x             ; $03:C6C9: 9D 38 02    ;/
                 RTS                     ; $03:C6CC: 60          ;Return
 
-CODE_03C6CD:    LDA #$B8                ; $03:C6CD: A9 B8       ;\Set Ypos of sprite to $B8
+CODE_03C6CD:    LDA #$B8                ; $03:C6CD: A9 B8       ;\Set Y-pos of sprite to $B8
                 BRA CODE_03C6C9         ; $03:C6CF: 80 F8       ;/
 
 DATA_03C6D1:    db $F8,$F4                                      ;Sprite initial xspeed. Format: Normal difficulty, hard difficulty
@@ -7954,31 +7951,31 @@ CODE_03C805:    STY $47,x               ; $03:C805: 94 47       ;
                 STA $29,x               ; $03:C811: 95 29       ;
 CODE_03C813:    RTS                     ; $03:C813: 60          ;
 
-DATA_03C814:    db $28,$38,$28,$38,$28                          ;Castle firebar rotation speed data. Format:
-                                              ;Firebar (clock), Fast Firebar (clock)
-                                              ;Firebar (C-Clock), Fast Firebar (C-Clock)
-                                              ;Long Firebar (Clock)
+DATA_03C814:    db $28,$38,$28,$38,$28                          ;Castle fire-bar rotation speed data. Format:
+                                              ;Fire-bar (clock), Fast Fire-bar (clock)
+                                              ;Fire-bar (C-Clock), Fast Fire-bar (C-Clock)
+                                              ;Long Fire-bar (Clock)
 
-DATA_03C819:    db $00,$00,$10,$10,$00                          ;When bit 4 is set, the firebar will rotate C-Clockwise
+DATA_03C819:    db $00,$00,$10,$10,$00                          ;When bit 4 is set, the fire-bar will rotate C-Clockwise
                                               ;Same format as above
 
-;Firebar
+;Fire-bar
 CODE_03C81E:    JSR CODE_03C946         ; $03:C81E: 20 46 C9    ;Find a free sprite slot and place the sprite in the level.
 CODE_03C821:    STZ $5E,x               ; $03:C821: 74 5E       ;No sprite horizontal speed.
                 LDA $1C,x               ; $03:C823: B5 1C       ;\Load sprite number
                 SEC                     ; $03:C825: 38          ; |Subtract $1B from it so we get index to 5 fire types
                 SBC #$1B                ; $03:C826: E9 1B       ; |Prepare for indexing
                 TAY                     ; $03:C828: A8          ;/
-                LDA DATA_03C814,y       ; $03:C829: B9 14 C8    ;\Get firebar rotation speed
+                LDA DATA_03C814,y       ; $03:C829: B9 14 C8    ;\Get fire-bar rotation speed
                 STA $0388,x             ; $03:C82C: 9D 88 03    ;/Store in spinning speed of firebars
-                LDA DATA_03C819,y       ; $03:C82F: B9 19 C8    ;\Get firebar rotation direction...
+                LDA DATA_03C819,y       ; $03:C82F: B9 19 C8    ;\Get fire-bar rotation direction...
                 STA $0203,x             ; $03:C832: 9D 03 02    ;/
                 LDA $0238,x             ; $03:C835: BD 38 02    ;\
-                CLC                     ; $03:C838: 18          ; |Sprite Ypos is 4px higher
+                CLC                     ; $03:C838: 18          ; |Sprite Y-pos is 4px higher
                 ADC #$04                ; $03:C839: 69 04       ; |So it will become centered in 1 16x16 block
                 STA $0238,x             ; $03:C83B: 9D 38 02    ;/
                 LDA $021A,x             ; $03:C83E: BD 1A 02    ;\
-                CLC                     ; $03:C841: 18          ; |Sprite Xpos is 4px more to the right
+                CLC                     ; $03:C841: 18          ; |Sprite X-pos is 4px more to the right
                 ADC #$04                ; $03:C842: 69 04       ; |So it will become centered in 1 16x16 block
                 STA $021A,x             ; $03:C844: 9D 1A 02    ;/
                 LDA $79,x               ; $03:C847: B5 79       ;\
@@ -8107,15 +8104,15 @@ CODE_03C948:    INY                     ; $03:C948: C8          ; |Find a free s
                 TXA                     ; $03:C951: 8A          ;Sprite index -> to accumulator
                 ORA #$80                ; $03:C952: 09 80       ; OR 0x80
                 STA $0010,y             ; $03:C954: 99 10 00    ;Store into sprite on-screen flag
-                LDA $79,x               ; $03:C957: B5 79       ;\Sprite xpos high byte
+                LDA $79,x               ; $03:C957: B5 79       ;\Sprite x-pos high byte
                 STA $0079,y             ; $03:C959: 99 79 00    ;/
                 LDA $021A,x             ; $03:C95C: BD 1A 02    ;\
-                STA $021A,y             ; $03:C95F: 99 1A 02    ;/Sprite xpos low byte
+                STA $021A,y             ; $03:C95F: 99 1A 02    ;/Sprite x-pos low byte
                 LDA #$01                ; $03:C962: A9 01       ;\
                 STA $10,x               ; $03:C964: 95 10       ;/Sprite off-screen flag?
                 STA $00BC,y             ; $03:C966: 99 BC 00    ;"position of sprites"
                 LDA $0238,x             ; $03:C969: BD 38 02    ;\
-                STA $0238,y             ; $03:C96C: 99 38 02    ;/Sprite Ypos
+                STA $0238,y             ; $03:C96C: 99 38 02    ;/Sprite Y-pos
 CODE_03C96F:    RTS                     ; $03:C96F: 60          ;
 
 DATA_03C970:    db $90,$80,$70,$90                              ;Bowser's fireball possible Y positions
@@ -8406,10 +8403,10 @@ CODE_03CBB5:    LDA $1C,x               ; $03:CBB5: B5 1C       ;\ Generator to 
 ;MAIN Routines for generators 12-17 (redirected from INIT routine pointer table)
 PNTR_03CBCC:    dw CODE_03C768                                  ; $12 - Lakitu generator (?)
                 dw CODE_03CBD8                                  ; $13 - Nothing at all (crashes)
-                dw CODE_03C870                                  ; $14 - Red flying cheep cheep generator
+                dw CODE_03C870                                  ; $14 - Red flying cheep-cheep generator
                 dw CODE_03C976                                  ; $15 - Bowser's fire generator
                 dw CODE_03CA50                                  ; $16 - Fireworks generator
-                dw CODE_03CAB1                                  ; $17 - Bullet bill/swimming cheep cheep generator
+                dw CODE_03CAB1                                  ; $17 - Bullet bill/swimming cheep-cheep generator
 
 CODE_03CBD8:    RTS                     ; $03:CBD8: 60          ;Return
 
@@ -8542,10 +8539,10 @@ PNTR_03CCC4:    dw CODE_03CD12                                  ;Sprites $0-$14
                 dw CODE_03CD08                                  ; $18 - Disable Lakitu generator (nothing in MAIN though)
                 dw CODE_03CD08                                  ; $19 - Nothing
                 dw CODE_03CD08                                  ; $1A - Nothing
-                dw CODE_03CD85                                  ; $1B - Firebar (Clockwise)
-                dw CODE_03CD85                                  ; $1C - Fast Firebar (Clockwise)
-                dw CODE_03CD85                                  ; $1D - Firebar (Counter-Clockwise)
-                dw CODE_03CD85                                  ; $1E - Fast Firebar (Counter-Clockwise)
+                dw CODE_03CD85                                  ; $1B - Fire-bar (Clockwise)
+                dw CODE_03CD85                                  ; $1C - Fast Fire-bar (Clockwise)
+                dw CODE_03CD85                                  ; $1D - Fire-bar (Counter-Clockwise)
+                dw CODE_03CD85                                  ; $1E - Fast Fire-bar (Counter-Clockwise)
                 dw CODE_03CD85                                  ; $1F - Long Fire Bar (Clockwise)
                 dw CODE_03CD85                                  ; $20 - Nothing? Related to the firebars above?
                 dw CODE_03CD85                                  ; $21 - Nothing? Related to the firebars above?
@@ -11358,17 +11355,17 @@ CODE_03E33E:    LDY #$02                ; $03:E33E: A0 02       ;Block interacti
                 DEY                     ; $03:E34A: 88          ;\
                 LDA $0704               ; $03:E34B: AD 04 07    ; |If swimming, branch, #$07 into $EB
                 BNE CODE_03E351         ; $03:E34E: D0 01       ; |
-                DEY                     ; $03:E350: 88          ;/If anything else (normal non-small mario), #$00 into $EB
+                DEY                     ; $03:E350: 88          ;/If anything else (normal non-small Mario), #$00 into $EB
 CODE_03E351:    LDA DATA_03EB3F,y       ; $03:E351: B9 3F EB    ;\Set Mario's hitbox for object interaction?
                 STA $EB                 ; $03:E354: 85 EB       ;/
                 TAY                     ; $03:E356: A8          ;Hitbox size to Y
                 LDX $0754               ; $03:E357: AE 54 07    ;Mario Small Flag to X
                 LDA $0714               ; $03:E35A: AD 14 07    ;\If Mario isn't ducking
                 BEQ CODE_03E360         ; $03:E35D: F0 01       ;/branch
-                INX                     ; $03:E35F: E8          ;Mario is ducking, so Mario Small flag index indicates mario = small
+                INX                     ; $03:E35F: E8          ;Mario is ducking, so Mario Small flag index indicates Mario = small
 CODE_03E360:    LDA $0237               ; $03:E360: AD 37 02    ;\Mario's Y position
-                CMP DATA_03E307,x       ; $03:E363: DD 07 E3    ; |If it's smaller than $20 (Small mario), or $10 (big mario)
-                BCC CODE_03E3A0         ; $03:E366: 90 38       ;/branch (to make mario not interact w/ objects on/above statusbar)
+                CMP DATA_03E307,x       ; $03:E363: DD 07 E3    ; |If it's smaller than $20 (Small Mario), or $10 (big Mario)
+                BCC CODE_03E3A0         ; $03:E366: 90 38       ;/branch (to make Mario not interact w/ objects on/above statusbar)
                 LDA #$01                ; $03:E368: A9 01       ;
                 STA $E4                 ; $03:E36A: 85 E4       ;
                 JSR CODE_03EB7B         ; $03:E36C: 20 7B EB    ;
@@ -11391,7 +11388,7 @@ CODE_03E360:    LDA $0237               ; $03:E360: AD 37 02    ;\Mario's Y posi
 
 CODE_03E393:    CMP #$2A                ; $03:E393: C9 2A       ;
                 BEQ CODE_03E39C         ; $03:E395: F0 05       ;
-                LDA #$01                ; $03:E397: A9 01       ;\ Executes as soon as mario hits a cement-block solid
+                LDA #$01                ; $03:E397: A9 01       ;\ Executes as soon as Mario hits a cement-block solid
                 STA $1600               ; $03:E399: 8D 00 16    ; |block from below which does NOT spawn ANYTHING
 CODE_03E39C:    LDA #$01                ; $03:E39C: A9 01       ; |Play sound, set Y-speed to downwards
                 STA $A0                 ; $03:E39E: 85 A0       ;/
@@ -12377,7 +12374,7 @@ CODE_03EB37:    JSR CODE_03EB83         ; $03:EB37: 20 83 EB    ;
                 CMP #$00                ; $03:EB3C: C9 00       ;
                 RTS                     ; $03:EB3E: 60          ;
 
-DATA_03EB3F:    db $00,$07,$0E                                  ; Mario<->block interaction "offset". Big Mario, Big swimming mario, Small mario
+DATA_03EB3F:    db $00,$07,$0E                                  ; Mario<->block interaction "offset". Big Mario, Big swimming Mario, Small Mario
 
 DATA_03EB42:    db $08,$03,$0C,$02,$02,$0D,$0D,$08              ;
                 db $03,$0C,$02,$02,$0D,$0D,$08,$03              ;

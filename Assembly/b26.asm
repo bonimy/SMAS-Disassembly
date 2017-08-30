@@ -5946,7 +5946,7 @@ CODE_26DEDB:    TYX                     ; $26:DEDB: BB          ; normal sprite
                 ORA $197C,x             ; $26:DEDF: 1D 7C 19    ; | or frozen
                 ORA $19C0               ; $26:DEE2: 0D C0 19    ; | or player swapping
                 ORA $1930               ; $26:DEE5: 0D 30 19    ; | or game is over
-                ORA $19AF               ; $26:DEE8: 0D AF 19    ; | or mario is taking damage
+                ORA $19AF               ; $26:DEE8: 0D AF 19    ; | or Mario is taking damage
                 ORA $19B0               ; $26:DEEB: 0D B0 19    ; | or luigi is taking damage
                 BEQ CODE_26DF18         ; $26:DEEE: F0 28       ; / then game is in suspended state:
                 JSR CODE_26D7F4             ; $26:DEF0: 20 F4 D7    ;
@@ -6040,7 +6040,7 @@ CODE_26DFA5:    TYX                     ; $26:DFA5: BB          ; \ if sprite is
 CODE_26DFA6:    LDA $18CD,x             ; $26:DFA6: BD CD 18    ; | or frozen
                 ORA $197C,x             ; $26:DFA9: 1D 7C 19    ; | or player swapping
                 ORA $19C0               ; $26:DFAC: 0D C0 19    ; | or game is over
-                ORA $1930               ; $26:DFAF: 0D 30 19    ; | or mario is taking damage
+                ORA $1930               ; $26:DFAF: 0D 30 19    ; | or Mario is taking damage
                 ORA $19AF               ; $26:DFB2: 0D AF 19    ; | or luigi is taking damage
                 ORA $19B0               ; $26:DFB5: 0D B0 19    ; / then game is in suspended state, skip this:
                 BNE CODE_26DFE7             ; $26:DFB8: D0 2D       ;
@@ -7775,11 +7775,11 @@ CODE_26EE6A:    RTS                         ; $26:EE6A: 60          ;
 
 CODE_26EE6B:    LDA $1A35               ; $26:EE6B: AD 35 1A    ; \ if this thing is not happening
                 BEQ CODE_26EE6A         ; $26:EE6E: F0 FA       ; / exit
-                LDA $18CB               ; $26:EE70: AD CB 18    ; \ if mario is frozen
+                LDA $18CB               ; $26:EE70: AD CB 18    ; \ if Mario is frozen
                 ORA $18CC               ; $26:EE73: 0D CC 18    ; | or luigi
                 ORA $1930               ; $26:EE76: 0D 30 19    ; | or game is over
                 ORA $19C0               ; $26:EE79: 0D C0 19    ; | or players are swapping
-                ORA $19AF               ; $26:EE7C: 0D AF 19    ; | or mario is taking damage
+                ORA $19AF               ; $26:EE7C: 0D AF 19    ; | or Mario is taking damage
                 ORA $19B0               ; $26:EE7F: 0D B0 19    ; | or luigi is taking damage
                 BNE CODE_26EE6A         ; $26:EE82: D0 E6       ; / exit
                 DEC $1A35                   ; $26:EE84: CE 35 1A    ;

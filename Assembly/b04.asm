@@ -6047,7 +6047,7 @@ DATA_04E2FA:    db $E8,$EC,$A0,$06,$E8,$FC,$A2,$06              ;These tables ar
                 db $08,$EC,$E0,$06,$08,$FC,$E2,$06              ;The odd-numbered tables are for Mario/Luigi.
                 db $08,$0C,$E4,$06,$10,$CC,$8D,$06              ;The format of these bytes are the following:
                 db $10,$D4,$8E,$06,$10,$E4,$AC,$06              ;$XX,$YY,$TT,$PP
-                db $10,$F4,$AE,$06,$18,$F4,$CC,$06              ;XX = Xpos, YY = Ypos, TT = Tile, PP = Priority
+                db $10,$F4,$AE,$06,$18,$F4,$CC,$06              ;XX = X-pos, YY = Y-pos, TT = Tile, PP = Priority
                 db $18,$04,$CE,$06,$18,$14,$EC,$06              ;basically the OAM format.
                 db $FF                                          ;
 
